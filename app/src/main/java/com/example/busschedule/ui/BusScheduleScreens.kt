@@ -72,7 +72,7 @@ enum class BusScheduleScreens {
 
 @Composable
 fun BusScheduleApp(
-    viewModel: BusScheduleViewModel = viewModel(factory = BusScheduleViewModel.factory)
+    viewModel: BusScheduleViewModel = viewModel(factory = BusScheduleViewModel.Factory)
 ) {
     val navController = rememberNavController()
     val fullScheduleTitle = stringResource(R.string.full_schedule)
