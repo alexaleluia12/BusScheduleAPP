@@ -3,7 +3,7 @@ package com.example.busschedule.data
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
-class LocalRepositoryBusSchedule(private val bsDao: BusScheduleDao):
+class LocalRepositoryBusSchedule(private val bsDao: BusScheduleDao) :
     RepositoryBusSchedule {
 
     override suspend fun delete(busSchedule: BusSchedule) = bsDao.delete(busSchedule)
@@ -17,7 +17,7 @@ class LocalRepositoryBusSchedule(private val bsDao: BusScheduleDao):
     override fun getByStopName(stname: String) = bsDao.getByStopName(stname)
 }
 
-class FakeRepositoryBusSchedule: RepositoryBusSchedule {
+class FakeRepositoryBusSchedule : RepositoryBusSchedule {
     override suspend fun delete(busSchedule: BusSchedule) {
     }
 
@@ -44,12 +44,14 @@ class FakeRepositoryBusSchedule: RepositoryBusSchedule {
         )
     }
 
-    override fun getByStopName(stname: String): Flow<BusSchedule> {
+    override fun getByStopName(stname: String): Flow<List<BusSchedule>> {
         return flowOf(
-            BusSchedule(
-                4,
-                "Samanbita",
-                137371
+            listOf(
+                BusSchedule(
+                    4,
+                    "Samanbita",
+                    137371
+                )
             )
         )
     }

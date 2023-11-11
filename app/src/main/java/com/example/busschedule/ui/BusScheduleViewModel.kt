@@ -22,10 +22,8 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.busschedule.AppApplication
 import com.example.busschedule.data.BusSchedule
-import com.example.busschedule.data.FakeRepositoryBusSchedule
 import com.example.busschedule.data.RepositoryBusSchedule
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOf
 
 class BusScheduleViewModel(private val repositoryBusSchedule: RepositoryBusSchedule) : ViewModel() {
 
@@ -35,15 +33,10 @@ class BusScheduleViewModel(private val repositoryBusSchedule: RepositoryBusSched
     }
 
     // Get example bus schedule by stop
-    fun getScheduleFor(stopName: String): Flow<List<BusSchedule>> = flowOf(
-        listOf(
-            BusSchedule(
-                1,
-                "Example Street",
-                0
-            )
-        )
-    )
+    fun getScheduleFor(stopName: String): Flow<List<BusSchedule>> {
+        return repositoryBusSchedule.getByStopName(stopName)
+    }
+
 
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {

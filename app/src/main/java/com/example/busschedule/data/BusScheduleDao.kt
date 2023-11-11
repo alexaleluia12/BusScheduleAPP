@@ -21,6 +21,6 @@ interface BusScheduleDao {
     @Query("SELECT * FROM Schedule ORDER BY arrival_time DESC")
     fun getAll(): Flow<List<BusSchedule>>
 
-    @Query("SELECT * FROM Schedule WHERE stop_name = :stname ORDER BY arrival_time DESC LIMIT 1")
-    fun getByStopName(stname: String): Flow<BusSchedule>
+    @Query("SELECT * FROM Schedule WHERE stop_name = :stname ORDER BY arrival_time DESC")
+    fun getByStopName(stname: String): Flow<List<BusSchedule>>
 }

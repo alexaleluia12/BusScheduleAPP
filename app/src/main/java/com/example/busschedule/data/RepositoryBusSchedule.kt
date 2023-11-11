@@ -11,5 +11,5 @@ interface RepositoryBusSchedule {
 
     fun getAll(): Flow<List<BusSchedule>>
 
-    fun getByStopName(stname: String): Flow<BusSchedule>
+    fun getByStopName(stname: String): Flow<List<BusSchedule>>
 }
