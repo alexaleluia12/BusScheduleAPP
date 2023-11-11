@@ -18,7 +18,7 @@ interface BusScheduleDao {
     @Delete
     suspend fun delete(busSchedule: BusSchedule)
 
-    @Query("SELECT * FROM Schedule ORDER BY arrival_time DESC")
+    @Query("SELECT * FROM Schedule GROUP BY stop_name ORDER BY arrival_time DESC")
     fun getAll(): Flow<List<BusSchedule>>
 
     @Query("SELECT * FROM Schedule WHERE stop_name = :stname ORDER BY arrival_time DESC")
